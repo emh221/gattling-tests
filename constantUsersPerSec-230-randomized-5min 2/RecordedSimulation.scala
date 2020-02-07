@@ -26,5 +26,5 @@ class RecordedSimulation extends Simulation {
 			.get("/")
 			.headers(headers_0))
 
-	setUp(scn.inject(constantUsersPerSec(130) during (5 minutes) randomized)).protocols(httpProtocol)
+	setUp(scn.inject(constantUsersPerSec(230) during (5 minutes) randomized)).protocols(httpProtocol)
 }
