@@ -19,12 +19,13 @@ class RecordedSimulation extends Simulation {
 
 	val headers_0 = Map("Proxy-Connection" -> "keep-alive")
 
-90
+
 
 	val scn = scenario("RecordedSimulation")
 		.exec(http("request_0")
 			.get("/")
 			.headers(headers_0))
 
-	setUp(scn.inject(rampUsers(9000) during (1 minute), rampUsersPerSec(50) to (100) during (1 minute), rampUsersPerSec(100) to (50) during (1 minute))).protocols(httpProtocol)
+    setUp(scn.inject(constantUsersPerSec(200) during (1 minute) randomized, atOnceUsers(200), constantUsersPerSec(200) during (1 minutes) randomized )).protocols(httpProtocol)
+
 }
